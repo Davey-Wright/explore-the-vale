@@ -1,0 +1,2 @@
+class Rename < ApplicationRecord
+end
