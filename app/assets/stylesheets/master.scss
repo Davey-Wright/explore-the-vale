@@ -1,0 +1,130 @@
+@import "bootstrap";
+
+
+$brand-color: rgba(55, 157, 80, 0.9);
+$brand-color-hover: rgba(55, 157, 80, 1);
+
+@mixin button-hover {
+	background: $brand-color;
+	color: white;
+}
+
+
+
+
+/* ----- Resets & Overides ----- */
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html {
+	font-size: 14px;
+	line-height: 1.5rem;
+	height: 100%;
+	box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  min-height: 100%;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+::selection {
+  background-color: rgba( 254, 69, 70, 0.7 );
+}
+
+abbr[title] {
+	text-decoration: none;
+}
+
+.navbar {
+	padding: 0;
+}
+
+/* ----- Links & Typography ----- */
+a, a:hover {
+	color: #222;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.wrap {
+	max-width: 95%;
+	margin: 0 auto;
+}
+
+
+/* ----- button primary ----- */
+.btn-brand {
+	background: $brand-color;
+	
+}
+
+.btn-brand:hover {
+	background:$brand-color-hover;
+}
+
+.btn-clear {
+	border: 1px solid $brand-color;
+}
+
+
+/* ----- Primary Navigation ----- */
+.primaryNav {
+	height: 8rem;
+}
+
+
+
+/* ----- Route Cards ----- */
+.routeCard {
+	padding-bottom: 1.5rem;
+}
+
+.routeCard:last-child {
+	margin-right: auto;
+}
+
+
+/* ----- Breakpoints ----- */
+
+@include media-breakpoint-up(sm) {
+	html {
+		font-size: 16px;
+	}
+
+  .wrap {
+  	max-width: 90%;
+  }
+
+  .routeCard {
+  	padding: .5rem;
+		width: 50%;
+	}
+
+}
+
+@include media-breakpoint-up(lg){
+	.routeCard {
+		width: 33.3333%;
+	}
+
+}
+
+@include media-breakpoint-up(xl){
+	.routeCard {
+		width: 25%;
+	}
+}
+

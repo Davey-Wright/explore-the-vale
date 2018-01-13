@@ -1,7 +1,20 @@
-<h1>Explore the Vale - Collaborate with walkers and hikers on great walks &amp; hikes in The Vale of Glamorgan</h1>
+<!--
+<section class='wrap'>
+	<h1>Explore the Vale - Collaborate with walkers and hikers on great walks &amp; hikes in The Vale of Glamorgan</h1>
+</section>
+-->
 
-<% @places.each do | place | %>
-
-	<h2><%= place.title %></h2>
-
-<% end %>
+<section class='wrap d-flex flex-wrap justify-content-between'>
+	<% @places.each do | place | %>
+	<div class='routeCard'>
+		<div class="card">
+	  	<img class="card-img-top" src="..." alt="Card image cap">
+		  <div class="card-block">
+		    <h4 class="card-title"><%= place.title %></h4>
+		    <p class="card-text"><%= place.description %></p>
+		    <a href="#" class="btn btn-brand">Go somewhere</a>
+		  </div>
+		</div>
+	</div>
+	<% end %>
+</section>
