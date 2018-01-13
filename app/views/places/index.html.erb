@@ -11,6 +11,12 @@
 	  	<img class="card-img-top" src="..." alt="Card image cap">
 		  <div class="card-block">
 		    <h4 class="card-title"><%= place.title %></h4>
+		    <ul class='routeCard-info'>
+		    	<li>Difficulty: <span><%= place.difficulty %></span></li>
+		    	<li>Terrain: <span><%= place.terrain %></span></li>
+		    	<li>Time: <span><%= place.time %> </span></li>
+		    	<li>Distance: <span><%= place.distance %></span> miles</li>
+		    </ul>
 		    <p class="card-text"><%= place.description %></p>
 		    <a href="#" class="btn btn-brand">Go somewhere</a>
 		  </div>
