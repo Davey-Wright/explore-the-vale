@@ -52,6 +52,14 @@ abbr[title] {
 	padding: 0;
 }
 
+ul {
+	padding-left: 0;
+}
+
+li {
+	list-style: none;
+}
+
 /* ----- Links & Typography ----- */
 a, a:hover {
 	color: #222;
@@ -110,6 +118,13 @@ a:hover {
 	padding-left: 0px;
 }
 
+
+/* ----- Filter Navigation ----- */
+.filterRouteNav-title {
+	font-size: 1rem;
+	font-weight: bold;
+	margin-right: 3rem;
+}
 
 /* ----- Breakpoints ----- */
 

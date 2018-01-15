@@ -1,2 +1,0 @@
-class Rename < ApplicationRecord
-end
