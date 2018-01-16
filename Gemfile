@@ -63,3 +63,5 @@ gem "bulma-rails", "~> 0.6.2"
 
 gem 'kaminari'
 
+gem 'simple_form'
+

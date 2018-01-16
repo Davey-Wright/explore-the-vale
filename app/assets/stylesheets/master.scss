@@ -6,6 +6,8 @@ $brand-color-hover: rgba(55, 157, 80, 1);
 
 $bold-serif: 'merriweatherbold', serif;
 
+$bottom-space: 2rem;
+
 @mixin button-hover {
 	background: $brand-color;
 	color: white;
@@ -130,6 +132,43 @@ a:hover {
 .routePagination {
 	width: 100%;
 	margin: 2rem;
+}
+
+/* ----- Place Form ----- */
+.placeForm {
+	margin-bottom: $bottom-space;
+}
+
+.placeForm label {
+	display: block;
+}
+
+.placeForm form {
+	min-width: 50%;
+}
+
+
+.placeForm-route-name input,
+.placeForm-difficulty input,
+.placeForm-time input,
+.placeForm-distance input,
+.placeForm-description textarea,
+.placeForm-directions textarea {
+	width: 100%;
+}
+
+.placeForm .form-group {
+	margin-bottom: $bottom-space;
+}
+
+.placeForm-heading {
+	padding-bottom: $bottom-space;
+}
+
+.placeForm-buttons button,
+.placeForm-buttons input,
+.placeForm-terrain input {
+	margin-right: .5rem;
 }
 
 /* ----- Breakpoints ----- */
