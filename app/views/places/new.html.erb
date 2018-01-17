@@ -27,26 +27,22 @@
 	  	<h6>Terrain</h6>
 		  	<%= f.input :terrain,
 		  			as: :check_boxes,
-		  			collection: ['Sand', 'Grass', 'Rocks', 'Marsh', 'Hilly'],
+		  			collection: Place.terrain_options,
 		  			label: false
 		  	%>
   	</div>
 
-  	<div class="placeForm-time">
+  	<div class="form-group placeForm-time">
   		<h6>Time</h6>
 	    <div class='d-flex align-items-center'>
-	    	<%= f.input :time, 
-	    			as: :float,
-	    			label: false,
-	    			input_html: { min: 0},
-	    			placeholder: 'Hours'
-	    	%>
-	    	<%= f.input :time, 
-    				as: :float,
-    				label: false,
-    				input_html: { max: 59, min: 0 },
-    				placeholder: 'Minutes'
-    		%>
+	    	<div class='placeForm-time-field'>
+		    	<%= number_field_tag 'place[hours]', nil, options = { min: 0 } %>
+		    	<small>* Hours</small>
+	    	</div>
+	    	<div class='placeForm-time-field'>
+	    		<%= number_field_tag 'place[minutes]', nil, options = { within: 0...60 } %>
+	    		<small>* Minutes</small>
+	    	</div>
 	  	</div>
 	  </div>
 
