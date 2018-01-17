@@ -64,7 +64,12 @@ end
 
 gem "bulma-rails", "~> 0.6.2"
 
+# Pagination
 gem 'kaminari'
 
+# Forms
 gem 'simple_form'
+
+# User authentication gem
+gem 'devise'
 
