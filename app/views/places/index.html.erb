@@ -81,8 +81,12 @@
 		    	</li>
 		    	<li>Time: <span><%= place.time %> </span></li>
 		    	<li>Distance: <span><%= place.distance %></span> miles</li>
+		    	<li>
+		    		Description:
+		    		<p class="card-text"><%= truncate( place.description, :length => 150, :seperator => ' ') %></p>
+		    	</li>
+		    	<li>User <span><%= place.user.email %></span> miles</li>
 		    </ul>
-		    <p class="card-text"><%= truncate( place.description, :length => 150, :seperator => ' ') %></p>
 		    <a href="#" class="btn btn-brand">Go somewhere</a>
 		  </div>
 		</div>
