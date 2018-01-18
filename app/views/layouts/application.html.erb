@@ -14,12 +14,16 @@
 
 		  <%= link_to 'Explore the Vale', root_path, :class => 'primaryNav-logo h4' %>
 	    <nav class="primaryNav-links">
-        <%= link_to new_place_path, :class => 'mr-sm-2 btn btn-clear' do %>
-          Add Place
-          <i class="fa fa-plus-circle"></i>
+        <% if user_signed_in? %>
+          <%= link_to new_place_path, :class => 'mr-sm-2 btn btn-clear' do %>
+            Add Place
+            <i class="fa fa-plus-circle"></i>
+          <% end %>
+          <%= link_to 'Log Out', destroy_user_session_path, method: :delete, :class => "mr-sm-2 btn btn-clear" %>
+        <% else %>
+          <%= link_to 'Log In', new_user_session_path, :class => "mr-sm-2 btn btn-clear" %>
+          <%= link_to 'Sign Up', new_user_registration_path, :class => "btn btn-brand" %>
         <% end %>
-        <a class="mr-sm-2 btn btn-clear" href="#">Sign In</a>
-        <a class=" btn btn-brand" href="#">Sign Up</a>
 	    </nav>
 
 		</header>
