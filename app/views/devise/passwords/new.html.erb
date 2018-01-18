@@ -1,15 +1,25 @@
-<h2>Forgot your password?</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
+<div class='placeForm wrap d-flex align-items-center flex-column'>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-  </div>
+	<h1 class='placeForm-heading'>Forgot your password?</h1>	
 
-  <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
-  </div>
-<% end %>
+	<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+	  <%= f.error_notification %>
 
-<%= render "devise/shared/links" %>
+	  <div class="form-group">
+	    <%= f.input :email, required: true, autofocus: true %>
+	  </div>
+
+	  <div class="form-group">
+	  	<div class='d-flex placeForm-buttons'>
+	    <%= f.button :submit, "Send me reset password instructions", class: 'btn btn-primary' %>
+	    <%= link_to "Cancel", :back, { :class=>"btn btn-secondary" } %>
+	  	</div>	
+	  </div>
+
+	<% end %>
+	<div class='form-group'>
+		<%= render "devise/shared/links" %>
+	</div>
+
+</div>
