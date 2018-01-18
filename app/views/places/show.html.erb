@@ -32,12 +32,14 @@
 			</li>
 			<li class='mb-4'>
 				<h5>Created by</h5>
-				<%= @place.user.email%>
+				<%= "#{ @place.user.first_name } #{ @place.user.last_name }" %> 
 			</li>
 		</ul>
 		<div class='mb-5'>
-			<%= link_to 'Edit route', edit_place_path(@place), class: 'btn btn-primary' %>
-			<%= link_to "Delete Route", place_path(@place), method: :delete, data: { confirm: 'Are you sure you want to delete this route?'}, class: 'btn btn-danger' %>
+			<% if current_user && current_user == @place.user %>
+				<%= link_to 'Edit route', edit_place_path(@place), class: 'btn btn-primary' %>
+				<%= link_to "Delete Route", place_path(@place), method: :delete, data: { confirm: 'Are you sure you want to delete this route?'}, class: 'btn btn-danger' %>
+			<% end %>
 		</div>
 	</div>
 </div>

@@ -86,7 +86,10 @@
 		    		Description:
 		    		<p class="card-text"><%= truncate( place.description, :length => 150, :seperator => ' ') %></p>
 		    	</li>
-		    	<li>User <span><%= place.user.email %></span> miles</li>
+		    	<li class='mb-4'>
+						Created By:
+						<%= "#{ place.user.first_name } #{ place.user.last_name }" %> 
+					</li>
 		    </ul>
 		    <%= link_to 'View Route', place_path( place ), class: 'btn btn-brand' %>
 		  </div>

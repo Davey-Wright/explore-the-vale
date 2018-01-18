@@ -1,6 +1,6 @@
 class PlacesController < ApplicationController
 	
-	before_action :authenticate_user!, only: [ :new, :create, :edit ]
+	before_action :authenticate_user!, only: [ :new, :create, :edit, :update ]
 
 	def index
 		@places = Place.all.page params[:page]
@@ -22,9 +22,18 @@ class PlacesController < ApplicationController
 
 	def edit
 		@place = Place.find( params[:id] )
+
+		if @place.user != current_user
+			return render text: 'Access Denied!', status: :forbidden
+		end
 	end
 
 	def update
+
+		if @place.user != current_user
+			return render text: 'Access Denied!', status: :forbidden
+		end
+
 		@place = Place.find( params[:id] )
 		@place.update_attributes( place_params )
 		redirect_to root_path
