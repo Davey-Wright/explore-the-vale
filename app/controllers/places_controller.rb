@@ -1,6 +1,6 @@
 class PlacesController < ApplicationController
 	
-	before_action :authenticate_user!, only: [ :new, :create ]
+	before_action :authenticate_user!, only: [ :new, :create, :edit ]
 
 	def index
 		@places = Place.all.page params[:page]
@@ -17,6 +17,10 @@ class PlacesController < ApplicationController
 	end
 
 	def show
+		@place = Place.find( params[:id] )
+	end
+
+	def edit
 		@place = Place.find( params[:id] )
 	end
 

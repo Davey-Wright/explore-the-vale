@@ -1,9 +1,9 @@
 <div class='placeForm wrap d-flex align-items-center flex-column'>
 
 
-	<h1 class='placeForm-heading'>Add your favourite route below</h1>	
+	<h1 class='placeForm-heading'>Edit <%= @place.title %></h1>	
 
-	<%= simple_form_for @places do |f| %>
+	<%= simple_form_for @place do |f| %>
 
 		<div class="form-group placeForm-route-name">
 			<h6>Route Name</h6>
