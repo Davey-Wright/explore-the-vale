@@ -1,0 +1,35 @@
+<div class='routePage-single d-flex justify-content-center'>
+	<div class='col-10 col-md-8 col-xl-6'>
+		<h1 class='mb-4'><%= @place.title %></h1>	
+		<ul>
+			<li class='mb-4'>
+				<h5>Difficulty</h5>
+				<%= @place.difficulty%>
+			</li>
+			<li class='mb-4'>
+				<h5>Terrain</h5>
+				<ul>
+				<% @place.terrain.each do | t | %>
+					<li><%= t %></li>
+				<% end %>
+				</ul>
+			</li>
+			<li class='mb-4'>
+				<h5>Time</h5>
+				<%= @place.time %>
+			</li>
+			<li class='mb-4'>
+				<h5>Distance</h5>
+				<%= @place.distance %>
+			</li>
+			<li class='mb-4'>
+				<h5>Description</h5>
+				<%= @place.description%>
+			</li>
+			<li class='mb-4'>
+				<h5>Directions</h5>
+				<%= @place.directions%>
+			</li>
+		</ul>
+	</div>
+</div>

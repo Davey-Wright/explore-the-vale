@@ -69,7 +69,7 @@
 		<div class="card">
 	  	<!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
 		  <div class="card-block">
-		    <h4 class="card-title"><%= place.title %></h4>
+		    <h4 class="card-title"><%= link_to place.title, place_path( place ) %></h4>
 		    <ul class='routeCard-info'>
 		    	<li>Difficulty: <span><%= place.difficulty %></span></li>
 		    	<li class='d-flex'> Terrain: 
@@ -87,7 +87,7 @@
 		    	</li>
 		    	<li>User <span><%= place.user.email %></span> miles</li>
 		    </ul>
-		    <a href="#" class="btn btn-brand">Go somewhere</a>
+		    <%= link_to 'View Route', place_path( place ), class: 'btn btn-brand' %>
 		  </div>
 		</div>
 	</div>
