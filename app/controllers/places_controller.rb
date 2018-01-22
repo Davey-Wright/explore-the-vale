@@ -1,6 +1,6 @@
 class PlacesController < ApplicationController
 	
-	before_action :authenticate_user!, only: [ :new, :create, :edit, :update ]
+	before_action :authenticate_user!, only: [ :new, :create, :edit, :update, :destroy ]
 
 	def index
 		@places = Place.all.page params[:page]
@@ -9,6 +9,7 @@ class PlacesController < ApplicationController
 	def new
 		@places = Place.new
 	end
+
 
 	def create
 		params[:place][:time] = params[:place][:hours] + ":" + params[:place][:minutes]
@@ -29,18 +30,22 @@ class PlacesController < ApplicationController
 	end
 
 	def update
+		@place = Place.find( params[:id] )
 
 		if @place.user != current_user
 			return render text: 'Access Denied!', status: :forbidden
 		end
 
-		@place = Place.find( params[:id] )
 		@place.update_attributes( place_params )
 		redirect_to root_path
 	end
 
 	def destroy
 		@place = Place.find( params[:id] )
+
+		if current_user != @place.user 
+			return render text: 'Access Denied!', status: :forbidden
+		end
 		@place.destroy
 		redirect_to root_path
 	end
