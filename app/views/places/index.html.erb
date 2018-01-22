@@ -64,7 +64,7 @@
 
 
 <section class='wrap d-flex flex-wrap justify-content-between'>
-	<% @places.each do | place | %>
+	<% @place.each do | place | %>
 	<div class='routeCard'>
 		<div class="card">
 	  	<!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
@@ -98,4 +98,4 @@
 	<% end %>
 </section>
 
-<%= paginate @places %>
+<%= paginate @place %>

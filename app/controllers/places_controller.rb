@@ -3,23 +3,40 @@ class PlacesController < ApplicationController
 	before_action :authenticate_user!, only: [ :new, :create, :edit, :update, :destroy ]
 
 	def index
-		@places = Place.all.page params[:page]
+		@place = Place.all.page params[:page]
 	end
 
+
 	def new
-		@places = Place.new
+		@place = Place.new
 	end
 
 
 	def create
-		params[:place][:time] = params[:place][:hours] + ":" + params[:place][:minutes]
-		current_user.places.create( place_params )
-		redirect_to root_path
+
+		h = params[:place][:hours]
+		m = params[:place][:minutes]
+
+		if h.present? || m.present?
+			params[:place][:time] = h + ":" + m
+		end
+
+		@place = current_user.places.create( place_params )
+
+		binding.pry
+
+		if @place.valid?
+			redirect_to root_path	
+		else
+			render :new, status: :unprocessable_entity
+		end
 	end
+
 
 	def show
 		@place = Place.find( params[:id] )
 	end
+
 
 	def edit
 		@place = Place.find( params[:id] )
@@ -27,7 +44,9 @@ class PlacesController < ApplicationController
 		if @place.user != current_user
 			return render text: 'Access Denied!', status: :forbidden
 		end
+
 	end
+
 
 	def update
 		@place = Place.find( params[:id] )
@@ -37,8 +56,15 @@ class PlacesController < ApplicationController
 		end
 
 		@place.update_attributes( place_params )
-		redirect_to root_path
+	
+		if @place.valid?
+			redirect_to root_path
+		else
+			render :edit, status: :unprocessable_entity
+		end
+		
 	end
+
 
 	def destroy
 		@place = Place.find( params[:id] )
@@ -50,8 +76,10 @@ class PlacesController < ApplicationController
 		redirect_to root_path
 	end
 
+
 private
 	
+
 	def place_params
 		params.require(:place).permit(:title, :difficulty, :time, :distance, :description, :directions, {terrain: []} )
 	end

@@ -3,7 +3,7 @@
 
 	<h1 class='placeForm-heading'>Add your favourite route below</h1>	
 
-	<%= simple_form_for @places do |f| %>
+	<%= simple_form_for @place do |f| %>
 
 		<div class="form-group placeForm-route-name">
 			<h6>Route Name</h6>
@@ -18,7 +18,6 @@
 	    	<%= f.input :difficulty, 
 	    			collection: ['Casual stroll', 'Could consider this to be exercise', 'The ticker is going', 'Stair master'], 
 	    			:class => 'form-control',
-	    			selected: 'Casual stroll',
 	    			label: false
 	    	%>
 	  </div>
@@ -36,24 +35,20 @@
   		<h6>Time</h6>
 	    <div class='d-flex align-items-center'>
 	    	<div class='placeForm-time-field'>
+	    		<small>* Hours</small>
 		    	<%= number_field_tag 'place[hours]', nil, options = { min: 0 } %>
-		    	<small>* Hours</small>
 	    	</div>
 	    	<div class='placeForm-time-field'>
-	    		<%= number_field_tag 'place[minutes]', nil, options = { within: 0...60 } %>
 	    		<small>* Minutes</small>
+	    		<%= number_field_tag 'place[minutes]', nil, options = { within: 0...60 } %>
 	    	</div>
 	  	</div>
 	  </div>
 
 	  <div class="form-group placeForm-distance">
 	    <h6>Distance</h6>
-	    	<%= f.input :distance,
-	    			label: false,
-	    			as: :float,
-	    			input_html: { min: '0' },
-	    			placeholder: 'Miles'
-	    	%>  	
+	    <small>* Miles</small>
+	    	<%= f.input :distance, label: false, type: "number", input_html: { min: '0' } %>
   	</div>
 
   	<div class="form-group placeForm-description">
