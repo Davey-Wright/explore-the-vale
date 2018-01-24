@@ -72,6 +72,11 @@
   		%>
 	  </div>
 
+	  <div class='form-group placeForm-address'>
+	  	<h6>Address</h6>
+	  	<%= f.input :address, label: false %>
+	  </div>
+
 	  <div class='d-flex placeForm-buttons'>
 	  	<%= f.submit 'Submit', class: 'btn btn-primary'%>
 	  	<%= f.button :button, "Reset", type: :reset, class: "btn btn-secondary" %>
