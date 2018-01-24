@@ -35,6 +35,32 @@
 				<%= "#{ @place.user.first_name } #{ @place.user.last_name }" %> 
 			</li>
 		</ul>
+
+<% if @place.latitude.present? && @place.longitude.present? %>
+  <div class='mb-4' id="map"></div>
+
+  <script>
+	  function initMap() {
+	    var myLatLng = {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>};
+
+	    var map = new google.maps.Map(document.getElementById('map'), {
+	      zoom: 13,
+	      center: myLatLng
+	    });
+
+	    var marker = new google.maps.Marker({
+	      position: myLatLng,
+	      map: map,
+	      title: 'Hello World!'
+	    });
+	  }
+	</script>
+
+	<script async defer
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDjClzKrEVx38Z8nlcoJTJ5uw82FLgl5g&callback=initMap">
+	</script>
+<% end %>
+
 		<div class='mb-5'>
 			<% if current_user && current_user == @place.user %>
 				<%= link_to 'Edit route', edit_place_path(@place), class: 'btn btn-primary' %>

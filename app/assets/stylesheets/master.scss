@@ -197,6 +197,11 @@ a:hover {
   padding: 2px 8px 2px 8px;
 }
 
+/* ----- Maps ----- */
+#map {
+  height: 300px;
+}
+
 /* ----- Breakpoints ----- */
 
 @include media-breakpoint-up(sm) {
