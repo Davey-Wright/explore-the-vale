@@ -16,7 +16,7 @@
 			</li>
 			<li class='mb-4'>
 				<h5>Time</h5>
-				<%= @place.time %>
+				<span><%= @place.time/60 %></span> hour, <span><%= @place.time%60 %></span> minutes
 			</li>
 			<li class='mb-4'>
 				<h5>Distance</h5>

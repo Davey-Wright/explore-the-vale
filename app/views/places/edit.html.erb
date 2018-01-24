@@ -36,11 +36,11 @@
   		<h6>Time</h6>
 	    <div class='d-flex align-items-center'>
 	    	<div class='placeForm-time-field'>
-		    	<%= number_field_tag 'place[hours]', nil, options = { min: 0 } %>
+		    	<%= number_field_tag 'place[hours]', nil, options = { min: 0, value: @place.time/60 } %>
 		    	<small>* Hours</small>
 	    	</div>
 	    	<div class='placeForm-time-field'>
-	    		<%= number_field_tag 'place[minutes]', nil, options = { within: 0...60 } %>
+	    		<%= number_field_tag 'place[minutes]', nil, options = { within: 0...60, value: @place.time%60 }%>
 	    		<small>* Minutes</small>
 	    	</div>
 	  	</div>
