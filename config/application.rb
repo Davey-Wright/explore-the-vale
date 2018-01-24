@@ -12,6 +12,9 @@ module ExploreTheVale
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
+    config.paths.add File.join('app', 'services'), glob: File.join('**', '*.rb')
+    config.autoload_paths += Dir[Rails.root.join('app', 'services', '*')]
+
     # Add the font path
     config.assets.paths << "#{ Rails.root }/app/assets/fonts"
 

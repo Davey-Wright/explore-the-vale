@@ -73,3 +73,10 @@ gem 'simple_form'
 # User authentication gem
 gem 'devise'
 
+# Geocoder
+gem 'geocoder'
+
+# Figaro adds ability to add EMV(environment variables) to app, 
+# adds application.yml file and updates .gitignore so git will not track application.yml
+gem 'figaro'
+

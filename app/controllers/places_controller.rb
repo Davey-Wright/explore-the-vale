@@ -1,6 +1,6 @@
 class PlacesController < ApplicationController
 	
-	before_action :authenticate_user!, only: [ :new, :create, :edit, :update, :destroy ]
+	before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
 	def index
 		@place = Place.all.page params[:page]
@@ -13,17 +13,7 @@ class PlacesController < ApplicationController
 
 
 	def create
-
-		h = params[:place][:hours]
-		m = params[:place][:minutes]
-
-		if h.present? || m.present?
-			params[:place][:time] = h + ":" + m
-		end
-
-		@place = current_user.places.create( place_params )
-
-		binding.pry
+		@place = Places::CreatePlace.new(current_user, place_params, time_params).call
 
 		if @place.valid?
 			redirect_to root_path	
@@ -34,12 +24,12 @@ class PlacesController < ApplicationController
 
 
 	def show
-		@place = Place.find( params[:id] )
+		@place = Place.find(params[:id])
 	end
 
 
 	def edit
-		@place = Place.find( params[:id] )
+		@place = Place.find(params[:id])
 
 		if @place.user != current_user
 			return render text: 'Access Denied!', status: :forbidden
@@ -79,12 +69,15 @@ class PlacesController < ApplicationController
 
 private
 	
-
 	def place_params
-		params.require(:place).permit(:title, :difficulty, :time, :distance, :description, :directions, {terrain: []} )
+		params.require(:place).permit(:title, :difficulty, :distance, :description, :directions, {terrain: []}, :address )
+	end
+
+
+# cant add these to place_params because Place model does not have these attributes, and were using place_params to create new place
+	def time_params
+		params.require(:place).permit(:hours, :minutes)
 	end
 
 end
 
-# [1, 2, 3].map { |n|  n.to_s }
-# [1, 2, 3].map(&:to_s)
