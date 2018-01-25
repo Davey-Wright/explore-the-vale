@@ -60,6 +60,25 @@
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDjClzKrEVx38Z8nlcoJTJ5uw82FLgl5g&callback=initMap">
 	</script>
 <% end %>
+	<h3 class='mb-3 mt-5'>Add a Comment</h3>
+	<%= simple_form_for @comment, url: '#' do |c| %>
+
+		<div class="form-group placeForm-difficulty">
+	  	<h6>Comment</h6>
+	    <%= c.input :message, label: false %>
+	  </div>
+
+		<div class="form-group placeForm-difficulty">
+	  	<h6>Rating</h6>
+	    <%= c.input :rating, label: false %>
+	  </div>
+
+	  <div class='mb-5'>
+	  	<%= c.submit 'Add a comment', class: 'btn btn-primary' %>
+	  </div>
+
+	<% end %>
+
 
 		<div class='mb-5'>
 			<% if current_user && current_user == @place.user %>
@@ -67,5 +86,7 @@
 				<%= link_to "Delete Route", place_path(@place), method: :delete, data: { confirm: 'Are you sure you want to delete this route?'}, class: 'btn btn-danger' %>
 			<% end %>
 		</div>
+
+
 	</div>
 </div>
