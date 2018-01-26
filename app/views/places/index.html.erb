@@ -69,26 +69,38 @@
 		<div class="card">
 	  	<!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
 		  <div class="card-block">
-		    <h4 class="card-title"><%= link_to place.title, place_path( place ) %></h4>
+		    <h4 class="card-title mb-4"><%= link_to place.title, place_path( place ) %></h4>
 		    <ul class='routeCard-info'>
-		    	<li>Difficulty: <span><%= place.difficulty %></span></li>
-		    	<li class='d-flex flex'> 
-		    		Terrain: 
+		    	<li class='pb-2'><strong>Difficulty: </strong><span><%= place.difficulty %></span></li>
+		    	<li class='d-flex flex pb-2'> 
+		    		<strong>Terrain: </strong>
 		    		<ul class='routeCard-terrain-list flex-wrap'>
 		    			<% place.terrain.each do | t | %>
 		    				<li><%= t %></li>
 		    			<% end %>
 		    		</ul>
 		    	</li>
-		    	<li>Time: <span><%= place.time/60 %></span> hour, <span><%= place.time%60 %></span> minutes</li>
-		    	<li>Distance: <span><%= place.distance %></span> miles</li>
-		    	<li>
-		    		Description:
-		    		<p class="card-text"><%= truncate( place.description, :length => 150, :seperator => ' ') %></p>
+		    	<li class='pb-2'><strong>Time:</strong> <span><%= place.time/60 %></span> hour, <span><%= place.time%60 %></span> minutes</li>
+		    	<li class='pb-2'><strong>Distance: </strong><span><%= place.distance %></span> miles</li>
+		    	<li class='pb-2'>
+		    		<strong>Description: </strong>
+		    		<span class="card-text"><%= truncate( place.description, :length => 150, :seperator => ' ') %></span>
 		    	</li>
 		    	<li class='mb-4'>
-						Created By:
+						<strong>Created By:</strong>
 						<%= "#{ place.user.first_name } #{ place.user.last_name }" %> 
+					</li>
+					<li>
+						<% if place.comments.present? %>
+							<div class='mb-5'>
+								<blockquote>
+									<% if place.comments.last.humanized_rating.present? %>
+										<h5><%= place.comments.last.humanized_rating %></h5>
+									<% end %>
+									<%= place.comments.last.message%>
+								</blockquote>
+							</div>
+						<% end %>
 					</li>
 		    </ul>
 		    <%= link_to 'View Route', place_path( place ), class: 'btn btn-brand' %>

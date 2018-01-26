@@ -62,7 +62,14 @@
 <% end %>
 
 	<div class='mb-5'>
-		<h2 class='mb-3 mt-5'>Comments</h2>
+		<div class='d-flex mb-3 mt-5 align-items-baseline'>
+			<h2 class='pr-3'>Comments</h2>
+			<!-- Button trigger modal -->
+			<a class='btn btn-clear' href='#' data-toggle="modal" data-target="#myModal">
+				<i class="fa fa-plus-circle"></i>
+				Add a Comment
+			</a>
+		</div>
 		<% @place.comments.each do |comment| %>
 			<div class='mb-5'>
 				<blockquote>
@@ -71,31 +78,46 @@
 					<% end %>
 					<%= comment.message%>
 				</blockquote>
-				<small class='ml-auto'><span><%= comment.user.first_name %></span> <span><%= comment.user.last_name %></span></small>
+				<small class='ml-auto'><span>Comment by: </span><span><%= comment.user.first_name %></span> <span><%= comment.user.last_name %></span></small>
 			</div>
 		<% end %>
 	</div>
 
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">×</span>
+	        </button>
+	        <h4 class="modal-title" id="myModalLabel">Add A Comment</h4>
+	      </div>
+	      <div class="modal-body">
+	        <div class='mb-5'>
+	        	<%= simple_form_for @comment, url: place_comments_path(@place) do |c| %>
 
-	<div class='mb-5'>
-		<h5 class='mb-3 mt-5'>Add a Comment</h5>
-		<%= simple_form_for @comment, url: place_comments_path(@place) do |c| %>
+	        		<div class="form-group placeForm-difficulty">
+	        	  	<h6>Comment</h6>
+	        	    <%= c.input :message, label: false %>
+	        	  </div>
 
-			<div class="form-group placeForm-difficulty">
-		  	<h6>Comment</h6>
-		    <%= c.input :message, label: false %>
-		  </div>
+	        		<div class="form-group placeForm-difficulty">
+	        	  	<h6>Rating</h6>
+	        	    <%= c.input :rating, collection: Comment::RATINGS, label: false %>
+	        	  </div>
+	        	
+	        		</div>
+	      			</div>
 
-			<div class="form-group placeForm-difficulty">
-		  	<h6>Rating</h6>
-		    <%= c.input :rating, collection: Comment::RATINGS, label: false %>
-		  </div>
+	      			<div class="modal-footer">
+	      			<%= c.submit 'Submit Comment', class: 'btn btn-primary' %>
+	        		<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
-		  <div class='mb-5'>
-		  	<%= c.submit 'Add a comment', class: 'btn btn-primary' %>
-		  </div>
-
-		<% end %>
+	        	<% end %>
+	      </div>
+	    </div>
+	  </div>
 	</div>
 
 		<div class='mb-5'>

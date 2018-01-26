@@ -23,8 +23,8 @@
         </div>
 
         <%= link_to new_place_path, :class => 'mr-sm-2 btn btn-clear' do %>
-          Add Place
           <i class="fa fa-plus-circle"></i>
+          Add Place
         <% end %>
 
         <% if user_signed_in? %>
@@ -37,7 +37,7 @@
 
 		</header>
 
-    <main>
+    <main class='mb-5'>
       
       <% if notice.present? %>
         <p class="alert alert-info"><%= notice %></p>

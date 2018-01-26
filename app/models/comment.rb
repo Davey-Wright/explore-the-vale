@@ -11,8 +11,11 @@ class Comment < ApplicationRecord
     'five stars': '5_stars'
 	}
 	
-	# invert the RATINGS hash so the keys are more readable
-	# we can access this in our view in our select dropdown
+	# Invert the RATINGS hash so values are more readable then return the value of the instance rating
+	# Can also be written like... 
+	# inverted_rating = RATINGS.invert
+	# inverted_rating[self.rating]
+
 	def humanized_rating
 		RATINGS.invert[self.rating]
 	end
