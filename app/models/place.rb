@@ -4,7 +4,11 @@ class Place < ApplicationRecord
 		['Sand', 'Grass', 'Rocks', 'Marsh', 'Hilly']
 	end
 
+	# Allows User model to access Place model
 	belongs_to :user
+
+	# Allows Place to access Comment model.
+	# Pluralization takes place as Place has many Comment(s)
 	has_many :comments
 
 	geocoded_by :address

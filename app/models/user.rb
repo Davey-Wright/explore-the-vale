@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
          
+  # Allows User to access Place model and Comment model
+  # pluralization occurs when specifying has_many
   has_many :places
   has_many :comments
 end
