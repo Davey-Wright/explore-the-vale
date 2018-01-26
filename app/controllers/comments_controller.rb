@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
 	before_action :authenticate_user!
 
 	def create
-		binding.pry
+
 		# find current place from id given in the URL
 		@place = Place.find(params[:place_id])
 

@@ -64,9 +64,11 @@
 	<div class='mb-5'>
 		<h2 class='mb-3 mt-5'>Comments</h2>
 		<% @place.comments.each do |comment| %>
-			<div class='mb-4'>
+			<div class='mb-5'>
 				<blockquote>
-					<h5><%= comment.rating %></h5>
+					<% if comment.humanized_rating.present? %>
+						<h5><%= comment.humanized_rating %></h5>
+					<% end %>
 					<%= comment.message%>
 				</blockquote>
 				<small class='ml-auto'><span><%= comment.user.first_name %></span> <span><%= comment.user.last_name %></span></small>
@@ -86,7 +88,7 @@
 
 			<div class="form-group placeForm-difficulty">
 		  	<h6>Rating</h6>
-		    <%= c.input :rating, label: false %>
+		    <%= c.input :rating, collection: Comment::RATINGS, label: false %>
 		  </div>
 
 		  <div class='mb-5'>
