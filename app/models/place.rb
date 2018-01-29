@@ -10,6 +10,7 @@ class Place < ApplicationRecord
 	# Allows Place to access Comment model.
 	# Pluralization takes place as Place has many Comment(s)
 	has_many :comments
+	has_many :photos
 
 	geocoded_by :address
 	after_validation :geocode

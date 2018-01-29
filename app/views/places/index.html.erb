@@ -3,7 +3,7 @@
 	<h1>Explore the Vale - Collaborate with walkers and hikers on great walks &amp; hikes in The Vale of Glamorgan</h1>
 </section>
 -->
-
+<!--
 	<nav class="filterRouteNav wrap navbar navbar-toggleable-md navbar-light mb-4">
 
 	  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,9 +33,7 @@
 				<li class="nav-item dropdown">
 	    			<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Terrain</a>
 			    <div class="dropdown-menu">
-			    	<% Place.terrain_options.each do | t |%>
-			    		<a class="dropdown-item" href="#"> <%= t %> </a>
-			    	<% end %>
+
 			    </div>
 			  </li>
 				<li class="nav-item dropdown">
@@ -56,12 +54,13 @@
 
 	    <form class="d-flex my-2 my-lg-0">
 	      <input class="form-control mr-sm-2" type="text" placeholder="Search">
-	      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+	      <button class="btn btn-clear my-2 my-sm-0" type="submit">Search</button>
 	    </form>
 
 	  </div>
 	</nav>
 
+-->
 
 <section class='wrap d-flex flex-wrap justify-content-between'>
 	<% @place.each do | place | %>
@@ -69,8 +68,13 @@
 		<div class="card">
 	  	<!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
 		  <div class="card-block">
-		    <h4 class="card-title mb-4"><%= link_to place.title, place_path( place ) %></h4>
+		    <h4 class="card-title mb-4"><%= link_to place.title, place_path(place) %></h4>
 		    <ul class='routeCard-info'>
+		    	<li class='mb-4'>
+		    		<%= link_to place_path(place) do %>
+							<%= image_tag place.photos.first.avatar %> 
+						<% end %>
+					</li>
 		    	<li class='pb-2'><strong>Difficulty: </strong><span><%= place.difficulty %></span></li>
 		    	<li class='d-flex flex pb-2'> 
 		    		<strong>Terrain: </strong>

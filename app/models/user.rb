@@ -8,4 +8,5 @@ class User < ApplicationRecord
   # pluralization occurs when specifying has_many
   has_many :places
   has_many :comments
+  has_many :photos
 end

@@ -80,3 +80,6 @@ gem 'geocoder'
 # adds application.yml file and updates .gitignore so git will not track application.yml
 gem 'figaro'
 
+# File uploading
+gem 'carrierwave', '~> 1.0'
+
