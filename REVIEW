@@ -1,0 +1,33 @@
+MENTOR SESH #4
+	- Where's best to put scripts in html.erb files?
+	 
+
+TO DO
+	- send email for
+		- new user registration
+
+
+WHAT DID I LEARN?
+
+	__ENVIRONMENT VARIABLES (ENV)
+		- Variables that are declared in /config/application.yml and can be used anywhere in the app, these are variables that you don't want anyone to see, and are generally used to access other accounts ie. mailer login details, google maps...
+
+		- Using Figaro Gem makes environment hides these needed app configuration vairables from the public and stops these variables from getting pushed up to github
+
+
+	__MAILER
+		- rails framework comes with a built in Mailer module ActionMailer that lets you send emails from your app
+		- generate your own mailer classes(models) which inherit from ActionMailer::Base
+		- mailer classes work similarly to controllers in that they have methods called "actions" and use views to structure the content
+
+
+	__ACTIVE RECORD CALLBACKS
+		- Active record callbacks are hooks that allow you to trigger logic at various points in the life cycle of an ActiveRecord Object 
+
+
+
+
+
+
+
+

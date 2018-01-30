@@ -64,6 +64,12 @@ end
 
 gem "bulma-rails", "~> 0.6.2"
 
+
+
+
+
+
+
 # Pagination
 gem 'kaminari'
 
