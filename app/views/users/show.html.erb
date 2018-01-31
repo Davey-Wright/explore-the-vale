@@ -1,1 +1,99 @@
-<h1><%= "#{@user.first_name} #{@user.last_name}" %>'s Dashboard</h1>
+
+<div class='d-flex justify-content-center mb-5'>
+	<div class='col-10 col-md-8 col-xl-6'>
+
+		<h1 class='mb-5 text-center'><%= "#{ @user.first_name } #{ @user.last_name }" %>'s Dashboard</h1>
+		
+		<div class='d-sm-flex mb-5'>
+			
+			<%= image_tag 'user.png', class: 'col-10 col-sm-6 mb-4' %>
+
+			<ul class='col-10 col-sm-6 ml-auto'>
+				<li class='mb-4 d-md-flex'>
+					<h5 class='mr-2'>Member since: </h5>
+					<%= @user.created_at.strftime( "%B %d, %Y") %>
+				</li>
+				<li class='mb-4 d-md-flex'>
+					<h5 class='mr-2'>Email: </h5>
+					<%= @user.email %>
+				</li>
+				<li class='mb-4 d-md-flex'>
+					<h5 class='mr-2'>Total comments: </h5>
+					<%= @user.comments.count %>
+				</li>
+				<li class='mb-4 d-md-flex'>
+					<h5 class='mr-2'>Total 5 star comments: </h5>
+						<%= @user.comments.where(rating: "5_stars").count %>
+				</li>
+			</ul>
+		</div>
+
+		<div class='mb-4'>
+			<h2 class='text-center'>Comments</h2>
+			<% @user.comments.each do |comment| %>
+				<div class='mb-5'>
+					<blockquote>
+						<% if comment.humanized_rating.present? %>
+							<h5><%= comment.humanized_rating %></h5>
+						<% end %>
+						<%= comment.message%>
+					</blockquote>
+					<small class='ml-auto'><span>Commented on: </span><span><%= comment.place.title %></span></small>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<h2 class='mb-5 text-center'>Routes</h2>
+<section class='wrap d-flex flex-wrap justify-content-between'>
+	<% @user.places.each do | place | %>
+	<div class='routeCard'>
+		<div class="card">
+	  	<!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+		  <div class="card-block">
+		    <h4 class="card-title mb-4"><%= link_to place.title, place_path(place) %></h4>
+		    <ul class='routeCard-info'>
+		    	<li class='mb-4'>
+		    		<%= link_to place_path(place) do %>
+							<%= image_tag place.photos.first.avatar %> 
+						<% end %>
+					</li>
+		    	<li class='pb-2'><strong>Difficulty: </strong><span><%= place.difficulty %></span></li>
+		    	<li class='d-flex flex pb-2'> 
+		    		<strong>Terrain: </strong>
+		    		<ul class='routeCard-terrain-list flex-wrap'>
+		    			<% place.terrain.each do | t | %>
+		    				<li><%= t %></li>
+		    			<% end %>
+		    		</ul>
+		    	</li>
+		    	<li class='pb-2'><strong>Time:</strong> <span><%= place.time/60 %></span> hour, <span><%= place.time%60 %></span> minutes</li>
+		    	<li class='pb-2'><strong>Distance: </strong><span><%= place.distance %></span> miles</li>
+		    	<li class='pb-2'>
+		    		<strong>Description: </strong>
+		    		<span class="card-text"><%= truncate( place.description, :length => 150, :seperator => ' ') %></span>
+		    	</li>
+		    	<li class='mb-4'>
+						<strong>Created By:</strong>
+						<%= "#{ place.user.first_name } #{ place.user.last_name }" %> 
+					</li>
+					<li>
+						<% if place.comments.present? %>
+							<div class='mb-5'>
+								<blockquote>
+									<% if place.comments.last.humanized_rating.present? %>
+										<h5><%= place.comments.last.humanized_rating %></h5>
+									<% end %>
+									<%= place.comments.last.message%>
+								</blockquote>
+							</div>
+						<% end %>
+					</li>
+		    </ul>
+		    <%= link_to 'View Route', place_path( place ), class: 'btn btn-brand' %>
+		  </div>
+		</div>
+	</div>
+	<% end %>
+</section>
