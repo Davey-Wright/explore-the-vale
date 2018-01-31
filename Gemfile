@@ -89,3 +89,5 @@ gem 'figaro'
 # File uploading
 gem 'carrierwave', '~> 1.0'
 
+# Allows AWS S3 to communicate with carrierwave
+gem "fog-aws"

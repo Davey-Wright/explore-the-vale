@@ -7,8 +7,6 @@ class PhotosController < ApplicationController
 
 		@place.photos.create(photo_params.merge(user: current_user))
 		
-		binding.pry
-		
 		redirect_to place_path(@place)
 	end
 
