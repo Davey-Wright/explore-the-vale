@@ -28,6 +28,7 @@
         <% end %>
 
         <% if user_signed_in? %>
+          <%= link_to 'Dashboard', user_path(current_user), :class => "mr-sm-2 btn btn-brand" %>
           <%= link_to 'Log Out', destroy_user_session_path, method: :delete, :class => "mr-sm-2 btn btn-clear" %>
         <% else %>
           <%= link_to 'Log In', new_user_session_path, :class => "mr-sm-2 btn btn-clear" %>

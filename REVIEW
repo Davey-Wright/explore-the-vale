@@ -26,6 +26,11 @@ WHAT DID I LEARN?
 		- Active record callbacks are hooks that allow you to trigger logic at various points in the life cycle of an ActiveRecord Object 
 
 
+	__CREATE A NEW PAGE
+		1) Create URL location for new page
+		2) Hook controller and action up to URL 
+		3) Create Model
+		4) Create View
 
 
 
