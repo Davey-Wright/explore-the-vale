@@ -40,18 +40,18 @@ ActiveRecord::Schema.define(version: 20180129151407) do
   create_table "places", force: :cascade do |t|
     t.string   "title"
     t.string   "difficulty"
+    t.string   "terrain"
     t.integer  "time"
     t.float    "distance"
     t.text     "description"
     t.text     "directions"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.text     "terrain",     default: [],              array: true
-    t.integer  "user_id"
+    t.boolean  "free_parking"
+    t.text     "where_to_park"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.float    "latitude"
     t.float    "longitude"
     t.string   "address"
-    t.index ["user_id"], name: "index_places_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|

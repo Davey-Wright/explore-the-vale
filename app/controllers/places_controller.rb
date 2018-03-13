@@ -64,6 +64,7 @@ class PlacesController < ApplicationController
 		if current_user != @place.user 
 			return render text: 'Access Denied!', status: :forbidden
 		end
+		# @place.user.comments.where(place_id: params[:id]).destroy_all
 		@place.destroy
 		redirect_to root_path
 	end
