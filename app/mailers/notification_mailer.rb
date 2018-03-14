@@ -1,6 +1,4 @@
 class NotificationMailer < ApplicationMailer
-
-	# default from address is only a string so you can write anything you want ie. no-reply@shakalaka.com
 	default from: 'd.dawg.apps@gmail.com'
 
 	# take a comment parameter to further find the place and place_owner 
@@ -10,6 +8,10 @@ class NotificationMailer < ApplicationMailer
 
 		# mail method sends the email
 		mail(to: @place_owner.email, subject: "A comment has been added to #{ @place.title }")
+	end
+
+	def mail_test
+		mail(to: "d-a-v-e-y@hotmail.com", subject: "Just testing the mailer")
 	end
 
 end
