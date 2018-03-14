@@ -10,8 +10,4 @@ class NotificationMailer < ApplicationMailer
 		mail(to: @place_owner.email, subject: "A comment has been added to #{ @place.title }")
 	end
 
-	def mail_test
-		mail(to: "d-a-v-e-y@hotmail.com", subject: "Just testing the mailer")
-	end
-
 end
