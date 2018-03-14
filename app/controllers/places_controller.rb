@@ -3,7 +3,7 @@ class PlacesController < ApplicationController
 	before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
 	def index
-		@place = Place.all.page params[:pages]
+		@place = Place.all.page params[:page]
 	end
 
 
