@@ -3,6 +3,10 @@
 		<h1 class='mb-4'><%= @place.title %></h1>	
 		<ul>
 			<li class='mb-4'>
+				<h5>Created by</h5>
+				<%= "#{ @place.user.first_name } #{ @place.user.last_name }" %> 
+			</li>
+			<li class='mb-4'>
 				<h5>Difficulty</h5>
 				<%= @place.difficulty%>
 			</li>
@@ -20,7 +24,7 @@
 			</li>
 			<li class='mb-4'>
 				<h5>Distance</h5>
-				<%= @place.distance %>
+				<%= "#{ @place.distance } miles" %>
 			</li>
 			<li class='mb-4'>
 				<h5>Description</h5>
@@ -29,10 +33,6 @@
 			<li class='mb-4'>
 				<h5>Directions</h5>
 				<%= @place.directions%>
-			</li>
-			<li class='mb-4'>
-				<h5>Created by</h5>
-				<%= "#{ @place.user.first_name } #{ @place.user.last_name }" %> 
 			</li>
 		</ul>
 
