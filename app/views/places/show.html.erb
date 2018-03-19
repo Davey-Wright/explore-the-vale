@@ -91,8 +91,8 @@
 	        </button>
 	        <h4 class="modal-title" id="photoModalLabel">Add A Photo</h4>
 	      </div>
-	      <div class="modal-body">
-        	<%= simple_form_for @photos, url: place_photos_path(@place) do |p| %>
+	     	<%= simple_form_for @photos, url: place_photos_path(@place) do |p| %>
+	      	<div class="modal-body">
         		<div class="form-group placeForm-difficulty">
         			<h6>Upload a photo</h6>
         			<%= p.input :avatar, label: false%>
@@ -146,9 +146,8 @@
 	        </button>
 	        <h4 class="modal-title" id="commentModalLabel">Add A Comment</h4>
 	      </div>
-	      <div class="modal-body">
-	        	<%= simple_form_for @comment, url: place_comments_path(@place) do |c| %>
-
+	      <%= simple_form_for @comment, url: place_comments_path(@place) do |c| %>
+	      	<div class="modal-body">
 	        		<div class="form-group placeForm-difficulty">
 	        	  	<h6>Comment</h6>
 	        	    <%= c.input :message, label: false %>
